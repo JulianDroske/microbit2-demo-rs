@@ -1,0 +1,34 @@
+[package]
+name = "microbit2_demo"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+cortex-m-rt = "0.7"
+embedded-graphics = "0.8.1"
+embedded-hal = "1.0.0"
+microbit-v2 = "0.15"
+rtt-target = "0.5"
+
+microbit2_demolib = { path = "./lib/microbit2_demolib" }
+
+[dependencies.nrf52833-pac]
+version = "0.12"
+features = ["rt"]
+
+[dependencies.nrf52833-hal]
+version = "0.18"
+default-features = false
+features = ["rt"]
+
+[dependencies.panic-rtt-target]
+version = "0.1"
+features = ["cortex-m"]
+
+# This works around old versions in the `microbit-v2`
+# crate. You don't have to use this crate, just linking
+# against it is sufficient.
+[dependencies.cortex-m]
+version = "0.7"
+features = ["inline-asm", "critical-section-single-core"]
+
